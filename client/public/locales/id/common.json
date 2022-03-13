@@ -1,0 +1,32 @@
+{
+  "avatar": {
+    "menu": {
+      "greeting": "Halo",
+      "logout": "Keluar"
+    }
+  },
+  "footer": {
+    "credit": "Proyek keinginan dari <1>Amruth Pillai</1>",
+    "language": {
+      "missing": "Tidak Ada Bahasamu?"
+    },
+    "license": "Dari komunitas, untuk komunitas."
+  },
+  "markdown": {
+    "help-text": "Bagian ini mendukung format <1>markdown</1>."
+  },
+  "date": {
+    "present": "Saat ini"
+  },
+  "subtitle": "Sebuah resume builder gratis dan open source.",
+  "title": "Reactive Resume",
+  "toast": {
+    "error": {
+      "upload-file-size": "Tolong hanya upload file dibawah 2 MB.",
+      "upload-photo-size": "Tolong hanya upload foto dibawah 2 MB, disarankan square."
+    },
+    "success": {
+      "resume-link-copied": "Sebuah link menuju resume anda telah disalin ke clipboard anda."
+    }
+  }
+}

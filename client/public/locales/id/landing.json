@@ -1,0 +1,41 @@
+{
+  "actions": {
+    "app": "Pergi ke aplikasi",
+    "login": "Masuk",
+    "logout": "Keluar",
+    "register": "Daftar"
+  },
+  "features": {
+    "heading": "Fitur",
+    "list": {
+      "ads": "Tidak Terdapat Iklan",
+      "export": "Ekspor resume anda ke format JSON atau PDF",
+      "free": "Gratis, selamanya",
+      "import": "Impor data dari LinkedIn, JSON Resume",
+      "languages": "Dapat diakses dalam berbagai bahasa",
+      "more": "Dan masih banyak fitur yang tersedia, <1>baca selengkapnya disini</1>",
+      "tracking": "Tidak Terdapat Tracking Pengguna"
+    }
+  },
+  "links": {
+    "heading": "Link",
+    "links": {
+      "donate": "Donasi",
+      "github": "Source Code",
+      "privacy": "Kebijakan Privasi",
+      "service": "Syarat Layanan"
+    }
+  },
+  "screenshots": {
+    "heading": "Screenshots"
+  },
+  "testimonials": {
+    "heading": "Testimoni",
+    "body": "Bagus atau buruk, Saya dengan senang hati menerima pendapat anda pada Reactive Resume dan bagaimana pengalaman yang dirasakan anda<br/>Ini adalah beberapa pesan yang dikirimkan oleh pengguna diseluruh dunia.",
+    "contact": "Anda dapat menghubungi saya melalui <1>email saya</1> atau melalui formulir kontak di <3>website saya</3>."
+  },
+  "summary": {
+    "body": "Reactive Resume merupakan resume builder gratis dan open source yang dibangun untuk membuat tugas keduniawian membuat, memperbarui dan membagikan resume anda semudah 1, 2, 3. Dengan aplikasi ini, anda dapat membuat berbagai resume, membagikannya dengan perekrut atau teman melalui link unk dan mencetaknya sebagai PDF, semuanya gratis, tidak ada iklan, tidak ada pelacakan, tanpa kehilangan integritas dan prifasi dari data anda.",
+    "heading": "Ringkasan"
+  }
+}

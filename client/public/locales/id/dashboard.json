@@ -1,0 +1,25 @@
+{
+  "create-resume": {
+    "subtitle": "Mulai dari awal",
+    "title": "Membuat Resume Baru"
+  },
+  "import-external": {
+    "subtitle": "LinkedIn, JSON Resume, Reactive Resume",
+    "title": "Impor dari Sumber Eksternal"
+  },
+  "resume": {
+    "menu": {
+      "delete": "Hapus",
+      "duplicate": "Duplikat",
+      "open": "Buka",
+      "rename": "Ubah Nama",
+      "share-link": "Bagikan Link",
+      "tooltips": {
+        "delete": "Apakah anda yakin ingin menghapus item ini? Ini merupakan tindakan yang tidak dapat diubah.",
+        "share-link": "Anda perlu merubah visibilitas resume anda menjadi publik agar dapat terlihat oleh orang lain."
+      }
+    },
+    "timestamp": "Terakhir diubah {{timestamp}} yang lalu"
+  },
+  "title": "Dashboard"
+}
