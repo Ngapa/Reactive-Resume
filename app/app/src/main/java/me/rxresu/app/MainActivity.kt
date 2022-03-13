@@ -1,76 +1,72 @@
 package me.rxresu.app
 
-import android.annotation.SuppressLint
-import android.graphics.Bitmap
-import android.os.Bundle
-import android.view.KeyEvent
-import android.webkit.WebResourceError
-import android.webkit.WebResourceRequest
-import android.webkit.WebView
-import android.webkit.WebViewClient
 import androidx.appcompat.app.AppCompatActivity
+import android.os.Bundle
+import android.content.Intent
+import java.lang.Exception
 
 class MainActivity : AppCompatActivity() {
-
-    private lateinit var webView: WebView
-
-    private var isLoaded: Boolean = false
-    private var webURL = "https://rxresu.me"
-
-    @SuppressLint("SetJavaScriptEnabled")
+    private var uiManager: UIManager? = null
+    private var webViewHelper: WebViewHelper? = null
+    private var intentHandled = false
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        setTheme(R.style.Theme_ReactiveResume_NoActionBar)
         setContentView(R.layout.activity_main)
 
-        webView = findViewById(R.id.webview)
+        // Setup Helpers
+        uiManager = UIManager(this)
+        webViewHelper = WebViewHelper(this, uiManager)
 
-        webView.settings.javaScriptEnabled = true
-        webView.settings.userAgentString = "Mozilla/5.0 (Linux; Android 8.0; Pixel 2 Build/OPD3.170816.012) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.82 Mobile Safari/537.36"
+        // Setup App
+        webViewHelper.setupWebView()
+        uiManager.changeRecentAppsIcon()
+
+        // Check for Intents
+        try {
+            val i = intent
+            val intentAction = i.action
+            // Handle URLs opened in Browser
+            if (!intentHandled && intentAction != null && intentAction == Intent.ACTION_VIEW) {
+                val intentUri = i.data
+                var intentText = ""
+                if (intentUri != null) {
+                    intentText = intentUri.toString()
+                }
+                // Load up the URL specified in the Intent
+                if (intentText != "") {
+                    intentHandled = true
+                    webViewHelper.loadIntentUrl(intentText)
+                }
+            } else {
+                // Load up the Web App
+                webViewHelper.loadHome()
+            }
+        } catch (e: Exception) {
+            // Load up the Web App
+            webViewHelper.loadHome()
+        }
+    }
+
+    override fun onPause() {
+        webViewHelper.onPause()
+
+        super.onPause()
     }
 
     override fun onResume() {
-        if (!isLoaded) loadWebView()
+        webViewHelper.onResume()
+        // retrieve content from cache primarily if not connected
+        webViewHelper.forceCacheIfOffline()
 
         super.onResume()
     }
 
-    private fun loadWebView() {
-        webView.loadUrl(webURL)
-
-        webView.webViewClient = object : WebViewClient() {
-            override fun shouldOverrideUrlLoading(view: WebView?, request: WebResourceRequest?): Boolean {
-                val url = request?.url.toString()
-                view?.loadUrl(url)
-                return super.shouldOverrideUrlLoading(view, request)
-            }
-
-            override fun onPageStarted(view: WebView?, url: String?, favicon: Bitmap?) {
-                super.onPageStarted(view, url, favicon)
-            }
-
-            override fun onPageFinished(view: WebView?, url: String?) {
-                isLoaded = true
-                super.onPageFinished(view, url)
-            }
-
-            override fun onReceivedError(view: WebView, request: WebResourceRequest, error: WebResourceError) {
-                isLoaded = false
-                super.onReceivedError(view, request, error)
-            }
+    // Handle back-press in browser
+    override fun onBackPressed() {
+        if (!webViewHelper.goBack()) {
+            super.onBackPressed()
         }
-    }
-
-    override fun onKeyDown(keyCode: Int, event: KeyEvent): Boolean {
-        if (event.action == KeyEvent.ACTION_DOWN) {
-            if (keyCode == KeyEvent.KEYCODE_BACK) {
-                if (webView.canGoBack()) {
-                    webView.goBack()
-                }
-
-                return true
-            }
-        }
-
-        return super.onKeyDown(keyCode, event)
     }
 }
